@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect
+from flask import Flask, request, redirect, send_from_directory
 
 app = Flask(__name__)
 
@@ -6,13 +6,16 @@ app = Flask(__name__)
 def home():
     return open('index.html').read()
 
+@app.route('/styles.css')  # Serve CSS explicitly
+def serve_css():
+    return send_from_directory('.', 'styles.css')
+
 @app.route('/submit', methods=['POST'])
 def submit():
     name = request.form['name']
     email = request.form['email']
     budget = request.form['budget']
     goals = request.form['goals']
-    # Save to file for now—email later
     with open('leads.txt', 'a') as f:
         f.write(f"{name}, {email}, {budget}, {goals}\n")
     return redirect('/thanks')
