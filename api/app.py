@@ -22,16 +22,17 @@ def submit():
     email = request.form['email']
     budget = request.form['budget']
     goals = request.form['goals']
-    print(f"Lead: {name}, {email}, {budget}, {goals}")  # Log for Vercel
+    print(f"Lead: {name}, {email}, {budget}, {goals}")
     # Email setup
     msg = MIMEText(f"New Lead:\nName: {name}\nEmail: {email}\nBudget: ${budget}\nGoals: {goals}")
     msg['Subject'] = 'New AdDirect Lead'
-    msg['From'] = 'noreply@addirect.com'  # Sender (your Gmail)
-    msg['To'] = 'gtinkco@gmail.com'    # Receiver (your Gmail)
+    msg['From'] = '"AdDirect No-Reply" <GTINKCO@gmail.com>'  # Display name trick
+    msg['To'] = 'GTINKCO@gmail.com'
+    msg['Reply-To'] = 'NOREPLY@addirect.com'  # Optional reply-to
     try:
         with smtplib.SMTP('smtp.gmail.com', 587) as server:
             server.starttls()
-            server.login('GTINKCO@gmail.com', 'sheevwyiqtzmjeti')  # Your App Password
+            server.login('GTINKCO@gmail.com', 'sheevwyiqtzmjeti')
             server.send_message(msg)
         print("Email sent successfully")
     except Exception as e:
