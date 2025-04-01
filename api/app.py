@@ -26,8 +26,8 @@ def submit():
     # Email setup
     msg = MIMEText(f"New Lead:\nName: {name}\nEmail: {email}\nBudget: ${budget}\nGoals: {goals}")
     msg['Subject'] = 'New AdDirect Lead'
-    msg['From'] = 'GTINKCO@gmail.com'  # Sender (your Gmail)
-    msg['To'] = 'GTINKCO@gmail.com'    # Receiver (your Gmail)
+    msg['From'] = 'noreply@addirect.com'  # Sender (your Gmail)
+    msg['To'] = 'gtinkco@gmail.com'    # Receiver (your Gmail)
     try:
         with smtplib.SMTP('smtp.gmail.com', 587) as server:
             server.starttls()
