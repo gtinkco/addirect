@@ -26,13 +26,13 @@ def submit():
     # Email setup
     msg = MIMEText(f"New Lead:\nName: {name}\nEmail: {email}\nBudget: ${budget}\nGoals: {goals}")
     msg['Subject'] = 'New AdDirect Lead'
-    msg['From'] = '"AdDirect No-Reply" <GTINKCO@gmail.com>'  # Display name trick
-    msg['To'] = 'GTINKCO@gmail.com'
-    msg['Reply-To'] = 'NOREPLY@addirect.com'  # Optional reply-to
+    msg['From'] = '"AdDirect No-Reply" <gtinkco@gmail.com>'  # Display name trick
+    msg['To'] = 'gtinkco@gmail.com'
+    msg['Reply-To'] = 'noreply@addirect.com'  # Optional reply-to
     try:
         with smtplib.SMTP('smtp.gmail.com', 587) as server:
             server.starttls()
-            server.login('GTINKCO@gmail.com', 'sheevwyiqtzmjeti')
+            server.login('gtinkco@gmail.com', 'sheevwyiqtzmjeti')
             server.send_message(msg)
         print("Email sent successfully")
     except Exception as e:
