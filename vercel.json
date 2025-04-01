@@ -1,5 +1,28 @@
 {
-    "rewrites": [
-      { "source": "/(.*)", "destination": "/app.py" }
+    "version": 2,
+    "builds": [
+      {
+        "src": "api/app.py",
+        "use": "@vercel/python"
+      },
+      {
+        "src": "public/**",
+        "use": "@vercel/static"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/submit",
+        "methods": ["POST"],
+        "dest": "/api/app.py"
+      },
+      {
+        "src": "/thanks",
+        "dest": "/api/app.py"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/public/$1"
+      }
     ]
   }
